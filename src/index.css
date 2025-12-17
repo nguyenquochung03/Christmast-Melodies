@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel+Decorative:wght@400;700;900&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 20% 6%;
+    --foreground: 45 100% 96%;
+
+    --card: 240 15% 10%;
+    --card-foreground: 45 100% 96%;
+
+    --popover: 240 15% 10%;
+    --popover-foreground: 45 100% 96%;
+
+    --primary: 350 80% 55%;
+    --primary-foreground: 45 100% 96%;
+
+    --secondary: 160 70% 40%;
+    --secondary-foreground: 45 100% 96%;
+
+    --muted: 240 10% 18%;
+    --muted-foreground: 45 20% 70%;
+
+    --accent: 45 100% 60%;
+    --accent-foreground: 240 20% 6%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 10% 20%;
+    --input: 240 10% 20%;
+    --ring: 350 80% 55%;
+
+    --radius: 0.75rem;
+
+    /* Vibrant Christmas colors */
+    --christmas-red: 350 85% 50%;
+    --christmas-red-bright: 0 100% 65%;
+    --christmas-green: 150 80% 35%;
+    --christmas-green-bright: 140 90% 45%;
+    --christmas-gold: 45 100% 55%;
+    --christmas-gold-bright: 50 100% 65%;
+    --christmas-snow: 200 30% 98%;
+    --christmas-blue: 210 100% 70%;
+    --christmas-purple: 280 80% 65%;
+    --christmas-pink: 330 90% 70%;
+    --christmas-orange: 25 100% 60%;
+    --christmas-cyan: 180 90% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Quicksand', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel Decorative', serif;
+  }
+}
+
+@layer components {
+  .christmas-glow {
+    text-shadow: 
+      0 0 10px hsl(var(--christmas-gold) / 1),
+      0 0 20px hsl(var(--christmas-gold) / 0.8),
+      0 0 40px hsl(var(--christmas-gold-bright) / 0.6),
+      0 0 60px hsl(var(--christmas-red) / 0.4);
+  }
+
+  .rainbow-text {
+    background: linear-gradient(90deg, 
+      hsl(var(--christmas-red)) 0%,
+      hsl(var(--christmas-orange)) 20%,
+      hsl(var(--christmas-gold)) 40%,
+      hsl(var(--christmas-green-bright)) 60%,
+      hsl(var(--christmas-cyan)) 80%,
+      hsl(var(--christmas-purple)) 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow-shift 4s linear infinite;
+  }
+
+  .glass-card {
+    background: hsl(var(--card) / 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--christmas-gold) / 0.15);
+    box-shadow: 
+      0 8px 32px hsl(0 0% 0% / 0.3),
+      inset 0 1px 0 hsl(var(--christmas-gold) / 0.1);
+  }
+
+  .glow-line {
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent 0%,
+      hsl(var(--christmas-gold) / 0.5) 20%,
+      hsl(var(--christmas-gold)) 50%,
+      hsl(var(--christmas-gold) / 0.5) 80%,
+      transparent 100%
+    );
+    box-shadow: 0 0 20px hsl(var(--christmas-gold) / 0.5);
+  }
+}
+
+@layer utilities {
+  @keyframes snowfall {
+    0% {
+      transform: translateY(-10vh) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes twinkle {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(0.9);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 
+        0 0 20px hsl(var(--christmas-gold) / 0.4),
+        0 0 40px hsl(var(--christmas-red) / 0.2);
+    }
+    50% {
+      box-shadow: 
+        0 0 30px hsl(var(--christmas-gold) / 0.6),
+        0 0 60px hsl(var(--christmas-red) / 0.3);
+    }
+  }
+
+  @keyframes lyric-appear {
+    0% {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+      filter: blur(8px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes lyric-glow {
+    0%, 100% {
+      text-shadow: 
+        0 0 20px hsl(var(--christmas-gold) / 0.8),
+        0 0 40px hsl(var(--christmas-gold) / 0.4);
+    }
+    50% {
+      text-shadow: 
+        0 0 30px hsl(var(--christmas-gold) / 1),
+        0 0 60px hsl(var(--christmas-red) / 0.5);
+    }
+  }
+
+  @keyframes rainbow-shift {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes bounce-soft {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scale-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-snowfall {
+    animation: snowfall linear infinite;
+  }
+
+  .animate-twinkle {
+    animation: twinkle ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float ease-in-out infinite 4s;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow ease-in-out infinite 2s;
+  }
+
+  .animate-lyric-appear {
+    animation: lyric-appear 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .animate-lyric-glow {
+    animation: lyric-glow 3s ease-in-out infinite;
+  }
+
+  .animate-rainbow {
+    animation: rainbow-shift 4s linear infinite;
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent 0%, hsl(var(--christmas-gold) / 0.2) 50%, transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+  }
+
+  .animate-bounce-soft {
+    animation: bounce-soft 2s ease-in-out infinite;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.5s ease-out forwards;
+  }
+}
