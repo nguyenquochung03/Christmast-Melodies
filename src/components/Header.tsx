@@ -30,7 +30,7 @@ const Header = ({ isStarted }: HeaderProps) => {
       <p className={`font-script rainbow-text transition-all duration-700 ${
         isStarted ? 'text-xl md:text-2xl' : 'text-2xl md:text-3xl'
       }`}>
-        Giáng Sinh An Lành
+        Wishing You Joy and Warmth This Christmast 
       </p>
 
       {/* Decorative line */}

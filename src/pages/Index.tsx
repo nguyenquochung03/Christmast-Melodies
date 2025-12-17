@@ -4,7 +4,7 @@ import Snowfall from '@/components/Snowfall';
 import ChristmasLights from '@/components/ChristmasLights';
 import FloatingDecorations from '@/components/FloatingDecorations';
 import Header from '@/components/Header';
-import LyricsDisplay from '@/components/LyricsDisplay';
+import LyricsDisplay, { type LyricLine } from '@/components/LyricsDisplay';
 
 const Index = () => {
   const [isStarted, setIsStarted] = useState(false);
@@ -13,34 +13,44 @@ const Index = () => {
     setIsStarted(started);
   }, []);
 
-  // Bạn có thể thay đổi nội dung này theo ý muốn
-  const lyrics = [
-    "🎄 Merry Christmas! 🎄",
-    "Chúc bạn một mùa Giáng sinh an lành",
-    "Tràn đầy yêu thương và hạnh phúc",
-    "Những khoảnh khắc ấm áp bên người thân",
-    "Và một năm mới tràn đầy niềm vui ✨",
+  const lyrics: LyricLine[] = [
+    {
+      text: 'Me? I guess I was a shoulder to cry on',
+      delayMs: 4050,
+    },
+    {
+      text: 'A face on a lover with a fire in his heart',
+      delayMs: 4000,
+    },
+    {
+      text: 'A man undercover but you tore me apart',
+      delayMs: 6200,
+    },
+    {
+      text: 'Oooh Oooh',
+      delayMs: 3000,
+    },
+    {
+      text: "Now I've found a real love, you'll never fool me again",
+      delayMs: 6000,
+    },
   ];
 
   return (
     <div className="min-h-screen relative overflow-hidden flex flex-col">
-      {/* Background layers */}
       <Background />
       <Snowfall />
       <ChristmasLights />
       <FloatingDecorations />
 
-      {/* Main content */}
       <main className="relative z-30 flex-1 flex flex-col justify-center container mx-auto px-4 py-20">
         <Header isStarted={isStarted} />
-        <LyricsDisplay 
-          lines={lyrics} 
-          intervalMs={2500} 
+        <LyricsDisplay
+          lines={lyrics}
           onStateChange={handleStateChange}
         />
       </main>
 
-      {/* Footer */}
       <footer className="relative z-30 text-center pb-8">
         <p className="text-sm text-muted-foreground/60">
           Made with ❤️ for Christmas 2024
